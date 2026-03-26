@@ -3,301 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nikil Kumar · Full-Stack Developer</title>
+<title>Nikil Kumar · Cloud Computing Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{
-  --bg:#0b0e1a;
-  --bg2:#0f1220;
-  --bg3:#141829;
-  --bg4:#1b2036;
-  --bdr:#1e2540;
-  --bdr2:#2a3354;
-  --w:#f0f2ff;
-  --g1:#c8cde8;
-  --g2:#8890b8;
-  --g3:#4a527a;
-  --g4:#252d4d;
-  --blue:#4f8ef7;
-  --purple:#8b5cf6;
+  --bg:#0b0e1a;--bg2:#0f1220;--bg3:#141829;--bg4:#1b2036;
+  --bdr:#1e2540;--bdr2:#2a3354;--w:#f0f2ff;--g1:#c8cde8;
+  --g2:#8890b8;--g3:#4a527a;--g4:#252d4d;
+  --blue:#4f8ef7;--purple:#8b5cf6;
   --grad:linear-gradient(135deg,#4f8ef7,#8b5cf6);
   --grad2:linear-gradient(135deg,rgba(79,142,247,.15),rgba(139,92,246,.15));
-  --mono:'JetBrains Mono',monospace;
-  --body:'Plus Jakarta Sans',sans-serif;
-  --display:'Clash Display',sans-serif;
-  --pill:100px;
+  --mono:'JetBrains Mono',monospace;--body:'Plus Jakarta Sans',sans-serif;
+  --display:'Clash Display',sans-serif;--pill:100px;
 }
 body{background:var(--bg);color:var(--w);font-family:var(--body);overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-thumb{background:var(--g4);border-radius:2px}
-
-/* ── CURSOR ── */
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--g4);border-radius:2px}
 #cur{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
-#cur-inner{
-  width:10px;height:10px;border-radius:50%;
-  background:var(--blue);transition:transform .18s,background .18s;
-  box-shadow:0 0 12px rgba(79,142,247,.6);
-}
-#cur-outer{
-  position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
-  width:36px;height:36px;border:1.5px solid var(--g3);border-radius:50%;transition:all .08s linear;
-}
+#cur-inner{width:10px;height:10px;border-radius:50%;background:var(--blue);transition:transform .18s,background .18s;box-shadow:0 0 12px rgba(79,142,247,.6)}
+#cur-outer{position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);width:36px;height:36px;border:1.5px solid var(--g3);border-radius:50%;transition:all .08s linear}
 body:has(a:hover) #cur-inner,body:has(button:hover) #cur-inner{transform:scale(2.2);background:var(--purple)}
 body:has(a:hover) #cur-outer,body:has(button:hover) #cur-outer{width:52px;height:52px;border-color:var(--blue)}
-
-/* ── LOADER (FIXED - RELIABLE) ── */
-#loader{
-  position:fixed;inset:0;z-index:10000;
-  background:var(--bg);display:flex;align-items:center;justify-content:center;
-  flex-direction:column;overflow:hidden;
-  transition:opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-#loader::before{
-  content:'';position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(79,142,247,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(79,142,247,.04) 1px,transparent 1px);
-  background-size:60px 60px;
-  animation:gridShift 8s linear infinite;pointer-events:none;
-}
+#loader{position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;transition:opacity 0.7s cubic-bezier(0.2,0.9,0.4,1.1)}
+#loader::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(79,142,247,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,247,.04) 1px,transparent 1px);background-size:60px 60px;animation:gridShift 8s linear infinite;pointer-events:none}
 @keyframes gridShift{from{background-position:0 0}to{background-position:60px 60px}}
-.ldr-glow{position:absolute;border-radius:50%;pointer-events:none;}
-.ldr-glow1{width:500px;height:500px;top:-100px;right:-100px;background:radial-gradient(circle,rgba(139,92,246,.15) 0%,transparent 70%);animation:glowPulse 3s ease-in-out infinite alternate;}
-.ldr-glow2{width:400px;height:400px;bottom:-80px;left:-80px;background:radial-gradient(circle,rgba(79,142,247,.12) 0%,transparent 70%);animation:glowPulse 3s ease-in-out infinite alternate 1.5s;}
+.ldr-glow{position:absolute;border-radius:50%;pointer-events:none}
+.ldr-glow1{width:500px;height:500px;top:-100px;right:-100px;background:radial-gradient(circle,rgba(139,92,246,.15) 0%,transparent 70%);animation:glowPulse 3s ease-in-out infinite alternate}
+.ldr-glow2{width:400px;height:400px;bottom:-80px;left:-80px;background:radial-gradient(circle,rgba(79,142,247,.12) 0%,transparent 70%);animation:glowPulse 3s ease-in-out infinite alternate 1.5s}
 @keyframes glowPulse{from{opacity:.5}to{opacity:1}}
-
-.ldr-center{
-  position:relative;z-index:2;
-  display:flex;flex-direction:column;
-  align-items:center;
-  gap:0;
-}
-.ldr-ring-wrap{
-  position:relative;width:120px;height:120px;margin-bottom:1.8rem;
-}
-.ldr-ring{width:120px;height:120px;border-radius:50%;border:1px solid var(--bdr2);position:absolute;inset:0;}
-.ldr-ring-spin{
-  width:120px;height:120px;border-radius:50%;
-  border:2px solid transparent;
-  border-top-color:var(--blue);border-right-color:var(--purple);
-  position:absolute;inset:0;
-  animation:ringSpin 1.2s linear infinite;
-}
-.ldr-ring-spin2{
-  width:90px;height:90px;border-radius:50%;
-  border:1.5px solid transparent;
-  border-bottom-color:rgba(79,142,247,.5);
-  position:absolute;top:15px;left:15px;
-  animation:ringSpin 2s linear infinite reverse;
-}
+.ldr-center{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.ldr-ring-wrap{position:relative;width:120px;height:120px;margin-bottom:1.8rem}
+.ldr-ring{width:120px;height:120px;border-radius:50%;border:1px solid var(--bdr2);position:absolute;inset:0}
+.ldr-ring-spin{width:120px;height:120px;border-radius:50%;border:2px solid transparent;border-top-color:var(--blue);border-right-color:var(--purple);position:absolute;inset:0;animation:ringSpin 1.2s linear infinite}
+.ldr-ring-spin2{width:90px;height:90px;border-radius:50%;border:1.5px solid transparent;border-bottom-color:rgba(79,142,247,.5);position:absolute;top:15px;left:15px;animation:ringSpin 2s linear infinite reverse}
 @keyframes ringSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-.ldr-ring-logo{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-family:var(--display);font-size:1.6rem;font-weight:700;
-  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.ldr-name{
-  font-family:var(--display);font-size:2.2rem;font-weight:700;
-  color:var(--w);letter-spacing:.06em;margin-bottom:.3rem;
-}
-.ldr-role{
-  font-family:var(--mono);font-size:.58rem;color:var(--g3);
-  letter-spacing:.28em;text-transform:uppercase;margin-bottom:2rem;
-}
-.ldr-pct{
-  font-family:var(--mono);font-size:1.1rem;font-weight:500;
-  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  margin-bottom:.6rem;
-}
-.ldr-bar-wrap{
-  width:260px;height:2px;background:var(--bdr2);
-  border-radius:2px;margin-bottom:.9rem;position:relative;overflow:visible;
-}
-#lbar{
-  height:2px;width:0%;border-radius:2px;
-  background:var(--grad);position:relative;
-}
-#lbar::after{
-  content:'';position:absolute;right:-4px;top:-3px;
-  width:8px;height:8px;border-radius:50%;
-  background:var(--blue);box-shadow:0 0 10px var(--blue),0 0 20px rgba(79,142,247,.5);
-}
-#ltxt{
-  font-family:var(--mono);font-size:.56rem;color:var(--g3);
-  letter-spacing:.18em;text-transform:uppercase;min-height:1.2em;margin-bottom:1.4rem;
-}
-.ldr-dots{display:flex;gap:.5rem;}
-.ldr-dot{width:5px;height:5px;border-radius:50%;background:var(--bdr2);transition:background .3s,box-shadow .3s;}
-.ldr-dot.on{background:var(--blue);box-shadow:0 0 8px var(--blue);}
-#skip-loader{
-  position:absolute;bottom:2rem;right:2rem;z-index:3;
-  font-family:var(--mono);font-size:.55rem;color:var(--g4);cursor:pointer;
-  letter-spacing:.12em;transition:color .2s;
-}
+.ldr-ring-logo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.6rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ldr-name{font-family:var(--display);font-size:2.2rem;font-weight:700;color:var(--w);letter-spacing:.06em;margin-bottom:.3rem}
+.ldr-role{font-family:var(--mono);font-size:.58rem;color:var(--g3);letter-spacing:.28em;text-transform:uppercase;margin-bottom:2rem}
+.ldr-pct{font-family:var(--mono);font-size:1.1rem;font-weight:500;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.6rem}
+.ldr-bar-wrap{width:260px;height:2px;background:var(--bdr2);border-radius:2px;margin-bottom:.9rem;position:relative;overflow:visible}
+#lbar{height:2px;width:0%;border-radius:2px;background:var(--grad);position:relative}
+#lbar::after{content:'';position:absolute;right:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue),0 0 20px rgba(79,142,247,.5)}
+#ltxt{font-family:var(--mono);font-size:.56rem;color:var(--g3);letter-spacing:.18em;text-transform:uppercase;min-height:1.2em;margin-bottom:1.4rem}
+.ldr-dots{display:flex;gap:.5rem}
+.ldr-dot{width:5px;height:5px;border-radius:50%;background:var(--bdr2);transition:background .3s,box-shadow .3s}
+.ldr-dot.on{background:var(--blue);box-shadow:0 0 8px var(--blue)}
+#skip-loader{position:absolute;bottom:2rem;right:2rem;z-index:3;font-family:var(--mono);font-size:.55rem;color:var(--g4);cursor:pointer;letter-spacing:.12em;transition:color .2s}
 #skip-loader:hover{color:var(--g2)}
-
-/* ── MAIN ── */
-#main{opacity:0;transition:opacity .8s ease}
-#main.on{opacity:1}
-
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  background:rgba(11,14,26,.85);backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--bdr);
-}
-.nav-inner{
-  max-width:1240px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 2rem;
-}
-.nav-logo{
-  font-family:var(--display);font-size:1.4rem;font-weight:700;
-  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  text-decoration:none;letter-spacing:.04em;
-}
+#main{opacity:0;transition:opacity .8s ease}#main.on{opacity:1}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(11,14,26,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+.nav-inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem}
+.nav-logo{font-family:var(--display);font-size:1.4rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;letter-spacing:.04em}
 .nav-links{display:flex;gap:2.2rem;list-style:none}
-.nav-links a{
-  font-size:.9rem;font-weight:500;color:var(--g2);
-  text-decoration:none;transition:color .2s;position:relative;
-}
-.nav-links a:hover{color:var(--w)}
-.nav-links a.active{color:var(--w)}
-.nav-links a.active::after{
-  content:'';position:absolute;bottom:-4px;left:0;width:100%;height:1px;
-  background:var(--grad);
-}
-.nav-cta{
-  padding:.55rem 1.5rem;border-radius:var(--pill);
-  background:var(--grad);color:#fff;border:none;
-  font-family:var(--body);font-size:.88rem;font-weight:600;
-  cursor:pointer;text-decoration:none;display:inline-block;
-  transition:opacity .2s,transform .2s;
-}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--g2);text-decoration:none;transition:color .2s;position:relative}
+.nav-links a:hover{color:var(--w)}.nav-links a.active{color:var(--w)}
+.nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;width:100%;height:1px;background:var(--grad)}
+.nav-cta{padding:.55rem 1.5rem;border-radius:var(--pill);background:var(--grad);color:#fff;border:none;font-family:var(--body);font-size:.88rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:opacity .2s,transform .2s}
 .nav-cta:hover{opacity:.85;transform:scale(1.03)}
-
-/* ── HERO ── */
-.hero{
-  min-height:100vh;display:flex;align-items:center;
-  position:relative;overflow:hidden;padding-top:72px;
-}
-.hero::before{
-  content:'';position:absolute;top:-20%;right:-10%;
-  width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(139,92,246,.12) 0%,transparent 70%);
-  animation:orb1 8s ease-in-out infinite alternate;pointer-events:none;
-}
-.hero::after{
-  content:'';position:absolute;bottom:-20%;left:-10%;
-  width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(79,142,247,.1) 0%,transparent 70%);
-  animation:orb2 10s ease-in-out infinite alternate;pointer-events:none;
-}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:72px}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.12) 0%,transparent 70%);animation:orb1 8s ease-in-out infinite alternate;pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-20%;left:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(79,142,247,.1) 0%,transparent 70%);animation:orb2 10s ease-in-out infinite alternate;pointer-events:none}
 @keyframes orb1{from{transform:translate(0,0)}to{transform:translate(-40px,60px)}}
 @keyframes orb2{from{transform:translate(0,0)}to{transform:translate(50px,-40px)}}
-
-.hero-wrap{
-  max-width:1240px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;gap:3rem;width:100%;padding:2rem 2rem;
-  position:relative;z-index:2;
-}
-.h-badge{
-  display:inline-flex;align-items:center;gap:.6rem;
-  background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.25);
-  border-radius:var(--pill);padding:.35rem 1rem .35rem .6rem;
-  font-family:var(--mono);font-size:.65rem;color:var(--blue);
-  letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.4rem;
-}
-.h-badge-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--blue);box-shadow:0 0 8px var(--blue);
-  animation:bdot 2s ease-in-out infinite;
-}
+.hero-wrap{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;width:100%;padding:2rem 2rem;position:relative;z-index:2}
+.h-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.25);border-radius:var(--pill);padding:.35rem 1rem .35rem .6rem;font-family:var(--mono);font-size:.65rem;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.4rem}
+.h-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 8px var(--blue);animation:bdot 2s ease-in-out infinite}
 @keyframes bdot{0%,100%{opacity:1}50%{opacity:.3}}
-
-.h-name{
-  font-family:var(--display);
-  font-size:clamp(4rem,7vw,8rem);
-  font-weight:700;line-height:.9;letter-spacing:.02em;
-  margin-bottom:1.4rem;color:var(--w);
-}
-.h-name span{
-  display:block;background:var(--grad);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.h-bio{
-  font-size:1.08rem;color:var(--g2);line-height:1.85;
-  max-width:500px;margin-bottom:2.4rem;font-weight:400;
-}
+.h-name{font-family:var(--display);font-size:clamp(4rem,7vw,8rem);font-weight:700;line-height:.9;letter-spacing:.02em;margin-bottom:1.4rem;color:var(--w)}
+.h-name span{display:block;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.h-bio{font-size:1.08rem;color:var(--g2);line-height:1.85;max-width:500px;margin-bottom:2.4rem;font-weight:400}
 .h-bio strong{color:var(--g1);font-weight:600}
 .h-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
-.btn-grad{
-  padding:.9rem 2.2rem;border-radius:var(--pill);
-  background:var(--grad);color:#fff;border:none;
-  font-family:var(--body);font-size:.98rem;font-weight:600;
-  text-decoration:none;cursor:pointer;transition:opacity .2s,transform .2s;
-  box-shadow:0 8px 32px rgba(79,142,247,.25);
-}
+.btn-grad{padding:.9rem 2.2rem;border-radius:var(--pill);background:var(--grad);color:#fff;border:none;font-family:var(--body);font-size:.98rem;font-weight:600;text-decoration:none;cursor:pointer;transition:opacity .2s,transform .2s;box-shadow:0 8px 32px rgba(79,142,247,.25)}
 .btn-grad:hover{opacity:.85;transform:translateY(-2px)}
-.btn-ghost{
-  padding:.9rem 2.2rem;border-radius:var(--pill);
-  background:transparent;color:var(--g1);
-  border:1.5px solid var(--bdr2);
-  font-family:var(--body);font-size:.98rem;font-weight:500;
-  text-decoration:none;cursor:pointer;transition:all .22s;
-}
+.btn-ghost{padding:.9rem 2.2rem;border-radius:var(--pill);background:transparent;color:var(--g1);border:1.5px solid var(--bdr2);font-family:var(--body);font-size:.98rem;font-weight:500;text-decoration:none;cursor:pointer;transition:all .22s}
 .btn-ghost:hover{border-color:var(--blue);color:var(--w)}
-
 .h-stats{display:flex;gap:2.4rem;flex-wrap:wrap}
 .hs{display:flex;flex-direction:column}
-.hs-v{
-  font-family:var(--display);font-size:2.2rem;font-weight:700;
-  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  line-height:1;
-}
+.hs-v{font-family:var(--display);font-size:2.2rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
 .hs-l{font-family:var(--mono);font-size:.62rem;color:var(--g3);letter-spacing:.1em;margin-top:.25rem}
-
 .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;height:520px}
 .hero-visual::before{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.12),transparent 70%);animation:orb1 6s ease-in-out infinite alternate}
-.code-card{position:relative;z-index:2;width:100%;max-width:500px;background:var(--bg3);border:1px solid var(--bdr2);border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.5),0 0 0 1px rgba(79,142,247,.05)}
-.code-bar{display:flex;align-items:center;gap:.45rem;padding:.75rem 1.1rem;background:var(--bg4);border-bottom:1px solid var(--bdr)}
-.code-dot{width:11px;height:11px;border-radius:50%}
-.code-fname{font-family:var(--mono);font-size:.65rem;color:var(--g3);letter-spacing:.04em;margin-left:.5rem}
-.code-body{padding:1.4rem 1.6rem;font-family:var(--mono);font-size:.78rem;line-height:2;overflow:hidden}
-.cl{display:block}
-.cl.kw{color:#c792ea}
-.cl.fn{color:#82aaff}
-.cl.str{color:#c3e88d}
-.cl.num{color:#f78c6c}
-.cl.cm{color:#546e7a;font-style:italic}
-.cl.op{color:#89ddff}
-.cl.w{color:var(--g1)}
-.cl.indent{padding-left:1.6rem}
-.cl.indent2{padding-left:3.2rem}
+.photo-card{position:relative;z-index:2;width:100%;max-width:420px;display:flex;flex-direction:column;gap:1rem}
+.photo-frame{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--bdr2);box-shadow:0 32px 80px rgba(0,0,0,.5),0 0 0 1px rgba(79,142,247,.08)}
+.photo-frame img{width:100%;height:340px;object-fit:cover;display:block}
+.photo-placeholder{width:100%;height:340px;background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.8rem}
+.photo-grad-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,14,26,.75) 0%,transparent 55%);pointer-events:none}
+.photo-overlay{position:absolute;bottom:1.2rem;left:1.2rem;right:1.2rem;z-index:3}
+.photo-name{font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--w);letter-spacing:.02em}
+.photo-role{font-family:var(--mono);font-size:.6rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.1em;text-transform:uppercase}
+.photo-badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
+.photo-badge{font-family:var(--mono);font-size:.5rem;padding:.18rem .55rem;border-radius:var(--pill);background:rgba(79,142,247,.15);border:1px solid rgba(79,142,247,.3);color:var(--blue)}
+.code-card-sm{background:var(--bg3);border:1px solid var(--bdr2);border-radius:12px;overflow:hidden}
+.code-bar-sm{display:flex;align-items:center;gap:.4rem;padding:.55rem .9rem;background:var(--bg4);border-bottom:1px solid var(--bdr)}
+.code-dot{width:9px;height:9px;border-radius:50%}
+.code-fname-sm{font-family:var(--mono);font-size:.6rem;color:var(--g3);letter-spacing:.04em;margin-left:.4rem}
+.code-body-sm{padding:.9rem 1.2rem;font-family:var(--mono);font-size:.7rem;line-height:1.85}
+.cl{display:block}.cl.kw{color:#c792ea}.cl.fn{color:#82aaff}.cl.str{color:#c3e88d}.cl.op{color:#89ddff}.cl.cm{color:#546e7a;font-style:italic}.cl.indent{padding-left:1.4rem}
 .marquee-wrap{overflow:hidden;padding:.6rem 0;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);background:var(--bg2)}
 .mq{display:flex;white-space:nowrap;font-family:var(--mono);font-size:.54rem;color:var(--g3);letter-spacing:.18em;animation:mq 32s linear infinite}
-.mq span{padding:0 1.8rem}
-.mq-dot{color:var(--bdr2)!important;padding:0!important}
+.mq span{padding:0 1.8rem}.mq-dot{color:var(--bdr2)!important;padding:0!important}
 @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.section{padding:7rem 2rem;border-top:1px solid var(--bdr)}
-.sec-wrap{max-width:1240px;margin:0 auto}
-.sec-head{margin-bottom:4rem}
-.sec-head.center{text-align:center}
-.sec-eyebrow{font-family:var(--mono);font-size:.65rem;color:var(--blue);letter-spacing:.22em;text-transform:uppercase;margin-bottom:.8rem;display:block}
-.sec-title{font-family:var(--display);font-size:clamp(2.6rem,5vw,4rem);font-weight:700;color:var(--w);line-height:1;margin-bottom:.7rem;letter-spacing:.02em}
-.sec-sub{font-size:1.05rem;color:var(--g2);font-weight:400}
-.rv{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
-.rv.in{opacity:1;transform:none}
 .stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bdr)}
 .stat-cell{background:var(--bg2);padding:2.4rem 2rem;display:flex;flex-direction:column;align-items:center;text-align:center;transition:background .2s;position:relative;overflow:hidden}
 .stat-cell::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:center;transition:transform .4s ease}
-.stat-cell:hover{background:var(--bg3)}
-.stat-cell:hover::after{transform:scaleX(1)}
+.stat-cell:hover{background:var(--bg3)}.stat-cell:hover::after{transform:scaleX(1)}
 .stat-n{font-family:var(--display);font-size:3rem;font-weight:700;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.4rem}
 .stat-l{font-family:var(--mono);font-size:.58rem;color:var(--g3);letter-spacing:.16em;text-transform:uppercase}
+.section{padding:7rem 2rem;border-top:1px solid var(--bdr)}
+.sec-wrap{max-width:1240px;margin:0 auto}
+.sec-head{margin-bottom:4rem}
+.sec-eyebrow{font-family:var(--mono);font-size:.65rem;color:var(--blue);letter-spacing:.22em;text-transform:uppercase;margin-bottom:.8rem;display:block}
+.sec-title{font-family:var(--display);font-size:clamp(2.6rem,5vw,4rem);font-weight:700;color:var(--w);line-height:1;margin-bottom:.7rem;letter-spacing:.02em}
+.sec-sub{font-size:1.05rem;color:var(--g2);font-weight:400}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}.rv.in{opacity:1;transform:none}
 .about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:4rem;align-items:start}
 .about-card{background:var(--bg2);border:1px solid var(--bdr2);border-radius:20px;padding:2.4rem;position:relative;overflow:hidden}
 .about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
@@ -310,33 +130,44 @@ nav{
 .about-text p strong{color:var(--g1);font-weight:600}
 .stack-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
 .chip{font-family:var(--mono);font-size:.62rem;padding:.28rem .75rem;border-radius:var(--pill);border:1px solid var(--bdr2);color:var(--g2);background:var(--bg3);transition:all .2s}
-.chip:hover{border-color:var(--blue);color:var(--blue)}
-.chip.hi{border-color:rgba(79,142,247,.35);color:var(--blue);background:rgba(79,142,247,.08)}
+.chip:hover{border-color:var(--blue);color:var(--blue)}.chip.hi{border-color:rgba(79,142,247,.35);color:var(--blue);background:rgba(79,142,247,.08)}
 .edu-list{margin-top:2rem;display:flex;flex-direction:column;gap:1px;background:var(--bdr)}
 .edu-item{background:var(--bg2);padding:1.2rem 1.5rem;display:grid;grid-template-columns:4px 1fr;gap:1rem;align-items:stretch;transition:background .2s}
-.edu-item:hover{background:var(--bg3)}
-.edu-bar{background:var(--grad);border-radius:2px}
+.edu-item:hover{background:var(--bg3)}.edu-bar{background:var(--grad);border-radius:2px}
 .edu-school{font-size:.98rem;font-weight:600;color:var(--w);margin-bottom:.18rem}
 .edu-deg{font-size:.88rem;color:var(--g2);font-weight:300;margin-bottom:.2rem}
 .edu-meta{font-family:var(--mono);font-size:.62rem;color:var(--blue);letter-spacing:.04em}
-.pj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.pj{background:var(--bg2);border:1px solid var(--bdr);border-radius:16px;padding:2rem;display:flex;flex-direction:column;gap:.85rem;transition:all .28s;position:relative;overflow:hidden}
-.pj:hover{background:var(--bg3);border-color:var(--bdr2);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.4),0 0 0 1px rgba(79,142,247,.1)}
-.pj-icon{width:46px;height:46px;border-radius:12px;background:var(--grad2);border:1px solid var(--bdr2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:.4rem;transition:transform .28s}
-.pj:hover .pj-icon{transform:scale(1.08)}
-.pj-n{font-family:var(--mono);font-size:.5rem;color:var(--g3);letter-spacing:.18em}
-.pj-title{font-family:var(--display);font-size:1.5rem;font-weight:600;color:var(--w);line-height:1.1;letter-spacing:.02em}
-.pj-sub{font-family:var(--mono);font-size:.6rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.06em}
-.pj-desc{font-size:.92rem;color:var(--g2);line-height:1.8;flex:1;font-weight:400}
-.pj-stk{display:flex;flex-wrap:wrap;gap:.3rem}
-.st{font-family:var(--mono);font-size:.55rem;padding:.16rem .52rem;border:1px solid var(--bdr2);color:var(--g3);border-radius:4px;transition:all .15s}
-.st.h{border-color:rgba(79,142,247,.3);color:var(--blue);background:rgba(79,142,247,.06)}
-.pj-link{font-family:var(--mono);font-size:.58rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;margin-top:.3rem;display:inline-flex;align-items:center;gap:.3rem;transition:opacity .2s}
+
+/* FEATURED PROJECTS */
+.pj-featured{display:flex;flex-direction:column;gap:5rem}
+.pj-feat{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;position:relative}
+.pj-feat:nth-child(even) .pj-feat-content{order:2}
+.pj-feat:nth-child(even) .pj-feat-visual{order:1}
+.pj-feat-num{font-family:var(--display);font-size:7rem;font-weight:700;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.1;position:absolute;top:-2rem;right:0;pointer-events:none;user-select:none}
+.pj-feat:nth-child(even) .pj-feat-num{right:auto;left:0}
+.pj-feat-label{font-family:var(--mono);font-size:.58rem;color:var(--blue);letter-spacing:.22em;text-transform:uppercase;margin-bottom:.5rem}
+.pj-feat-date{font-family:var(--mono);font-size:.6rem;color:var(--g3);letter-spacing:.08em;margin-bottom:.8rem}
+.pj-feat-title{font-family:var(--display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;color:var(--w);line-height:1.15;letter-spacing:.02em;margin-bottom:1rem}
+.pj-feat-desc{font-size:.95rem;color:var(--g2);line-height:1.85;margin-bottom:1.4rem}
+.pj-feat-bullets{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.6rem;padding:1.2rem 1.4rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:10px}
+.pj-bullet{font-size:.875rem;color:var(--g2);display:flex;align-items:flex-start;gap:.65rem;line-height:1.75}
+.pj-bullet::before{content:'▹';color:var(--blue);font-size:.7rem;flex-shrink:0;margin-top:.22rem}
+.pj-feat-stk{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem}
+.pj-st{font-family:var(--mono);font-size:.6rem;padding:.22rem .65rem;border:1px solid var(--bdr2);color:var(--g3);border-radius:6px;transition:all .15s}
+.pj-st.h{border-color:rgba(79,142,247,.3);color:var(--blue);background:rgba(79,142,247,.06)}
+.pj-feat-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.62rem;color:var(--g2);text-decoration:none;border:1px solid var(--bdr2);padding:.5rem 1.1rem;border-radius:6px;transition:all .2s}
+.pj-feat-link:hover{border-color:var(--blue);color:var(--blue);background:rgba(79,142,247,.05)}
+.pj-feat-visual{background:var(--bg2);border:1px solid var(--bdr2);border-radius:16px;overflow:hidden;position:relative}
+.pj-feat-visual::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.pj-mockup{padding:2rem;font-family:var(--mono);font-size:.72rem;line-height:1.9;color:var(--g2);min-height:280px;display:flex;flex-direction:column;justify-content:center}
+.pj-mockup-bar{display:flex;gap:.4rem;margin-bottom:1.4rem}
+.pj-mockup-dot{width:9px;height:9px;border-radius:50%}
+.pm-line{display:block;padding:.04rem 0}.pm-kw{color:#c792ea}.pm-fn{color:#82aaff}.pm-str{color:#c3e88d}.pm-cm{color:#546e7a;font-style:italic}.pm-op{color:#89ddff}.pm-indent{padding-left:1.4rem}.pm-indent2{padding-left:2.8rem}
+
 .sk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
 .sk{background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:1.8rem;transition:all .25s;position:relative;overflow:hidden}
 .sk::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
-.sk:hover{background:var(--bg3);border-color:var(--bdr2);transform:translateY(-2px)}
-.sk:hover::before{transform:scaleX(1)}
+.sk:hover{background:var(--bg3);border-color:var(--bdr2);transform:translateY(-2px)}.sk:hover::before{transform:scaleX(1)}
 .sk-icon{font-size:1.8rem;margin-bottom:1rem}
 .sk-name{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--w);margin-bottom:.6rem;letter-spacing:.02em}
 .sk-list{display:flex;flex-direction:column;gap:.3rem}
@@ -373,35 +204,27 @@ nav{
 .soc{font-family:var(--mono);font-size:.58rem;padding:.55rem 1.3rem;border:1px solid var(--bdr2);border-radius:6px;color:var(--g3);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:all .2s}
 .soc:hover{border-color:var(--blue);color:var(--blue);background:rgba(79,142,247,.06)}
 footer{padding:1.6rem 2rem;background:var(--bg2);border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.55rem;color:var(--g3)}
-@media(max-width:1024px){.hero-wrap,.about-grid{grid-template-columns:1fr}.hero-visual{height:360px}.pj-grid,.sk-grid{grid-template-columns:1fr 1fr}.stats-strip{grid-template-columns:repeat(2,1fr)}.section{padding:5rem 1.5rem}nav .nav-links{display:none}}
-@media(max-width:600px){.pj-grid,.sk-grid,.cert-grid,.ach-grid{grid-template-columns:1fr}.stats-strip{grid-template-columns:repeat(2,1fr)}}
-@keyframes cblink{0%,100%{opacity:1}50%{opacity:0}}
+@media(max-width:1024px){
+  .hero-wrap,.about-grid{grid-template-columns:1fr}.hero-visual{height:auto}
+  .pj-feat{grid-template-columns:1fr}.pj-feat:nth-child(even) .pj-feat-content,.pj-feat:nth-child(even) .pj-feat-visual{order:unset}
+  .sk-grid{grid-template-columns:1fr 1fr}.stats-strip{grid-template-columns:repeat(2,1fr)}
+  .section{padding:5rem 1.5rem}nav .nav-links{display:none}
+}
+@media(max-width:600px){.sk-grid,.cert-grid,.ach-grid{grid-template-columns:1fr}.stats-strip{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 
 <div id="loader">
-  <div class="ldr-glow ldr-glow1"></div>
-  <div class="ldr-glow ldr-glow2"></div>
+  <div class="ldr-glow ldr-glow1"></div><div class="ldr-glow ldr-glow2"></div>
   <div class="ldr-center">
-    <div class="ldr-ring-wrap">
-      <div class="ldr-ring"></div>
-      <div class="ldr-ring-spin"></div>
-      <div class="ldr-ring-spin2"></div>
-      <div class="ldr-ring-logo">NK.</div>
-    </div>
+    <div class="ldr-ring-wrap"><div class="ldr-ring"></div><div class="ldr-ring-spin"></div><div class="ldr-ring-spin2"></div><div class="ldr-ring-logo">NK.</div></div>
     <div class="ldr-name">Nikil Kumar</div>
-    <div class="ldr-role">Full-Stack Developer</div>
+    <div class="ldr-role">Cloud Computing Engineer</div>
     <div class="ldr-pct" id="lpct">0%</div>
     <div class="ldr-bar-wrap"><div id="lbar"></div></div>
     <div id="ltxt">Initialising...</div>
-    <div class="ldr-dots">
-      <div class="ldr-dot" id="d0"></div>
-      <div class="ldr-dot" id="d1"></div>
-      <div class="ldr-dot" id="d2"></div>
-      <div class="ldr-dot" id="d3"></div>
-      <div class="ldr-dot" id="d4"></div>
-    </div>
+    <div class="ldr-dots"><div class="ldr-dot" id="d0"></div><div class="ldr-dot" id="d1"></div><div class="ldr-dot" id="d2"></div><div class="ldr-dot" id="d3"></div><div class="ldr-dot" id="d4"></div></div>
   </div>
   <div id="skip-loader">skip ↗</div>
 </div>
@@ -427,173 +250,314 @@ footer{padding:1.6rem 2rem;background:var(--bg2);border-top:1px solid var(--bdr)
 <section class="hero" id="home">
   <div class="hero-wrap">
     <div>
-      <div class="h-badge"><span class="h-badge-dot"></span>Full-Stack Developer · LPU</div>
+      <div class="h-badge"><span class="h-badge-dot"></span>Cloud Computing · LPU</div>
       <h1 class="h-name">Nikil<span>Kumar</span></h1>
-      <p class="h-bio"><strong>Full-Stack Web Developer</strong> building responsive, user-focused applications. B.Tech CSE at LPU. Skilled in <strong>React, Node.js, Java</strong> and modern web technologies — crafting clean UIs and solid backends.</p>
+      <p class="h-bio"><strong>Cloud Computing Engineer</strong> building scalable cloud-native applications and web solutions. B.Tech CSE at LPU. Skilled in <strong>AWS, Azure, React, Node.js</strong> and modern web technologies — from infrastructure to interface.</p>
       <div class="h-btns"><a href="#projects" class="btn-grad">View Projects</a><a href="#contact" class="btn-ghost">Get in Touch</a></div>
-      <div class="h-stats"><div class="hs"><div class="hs-v">3</div><div class="hs-l">Projects Built</div></div><div class="hs"><div class="hs-v">5+</div><div class="hs-l">Certifications</div></div><div class="hs"><div class="hs-v">85%</div><div class="hs-l">NPTEL Score</div></div><div class="hs"><div class="hs-v">LPU</div><div class="hs-l">B.Tech CSE</div></div></div>
+      <div class="h-stats">
+        <div class="hs"><div class="hs-v">2</div><div class="hs-l">Projects Built</div></div>
+        <div class="hs"><div class="hs-v">5+</div><div class="hs-l">Certifications</div></div>
+        <div class="hs"><div class="hs-v">85%</div><div class="hs-l">NPTEL Score</div></div>
+        <div class="hs"><div class="hs-v">LPU</div><div class="hs-l">B.Tech CSE</div></div>
+      </div>
     </div>
-    <div class="hero-visual"><div class="code-card"><div class="code-bar"><span class="code-dot" style="background:#ff5f57"></span><span class="code-dot" style="background:#febc2e"></span><span class="code-dot" style="background:#28c840"></span><span class="code-fname">portfolio.js</span></div><div class="code-body"><span class="cl cm">// Nikil Kumar · Full-Stack Dev</span><span class="cl"> </span><span class="cl"><span class="kw">const</span> <span class="fn">developer</span> <span class="op">=</span> {</span><span class="cl indent"><span class="str">name</span><span class="op">:</span> <span class="str">"Nikil Kumar"</span><span class="op">,</span></span><span class="cl indent"><span class="str">role</span><span class="op">:</span> <span class="str">"Full-Stack Developer"</span><span class="op">,</span></span><span class="cl indent"><span class="str">university</span><span class="op">:</span> <span class="str">"LPU, Punjab"</span><span class="op">,</span></span><span class="cl indent"><span class="str">stack</span><span class="op">:</span> [</span><span class="cl indent2"><span class="str">"React"</span><span class="op">,</span> <span class="str">"Node.js"</span><span class="op">,</span></span><span class="cl indent2"><span class="str">"Java"</span><span class="op">,</span> <span class="str">"Tailwind"</span><span class="op">,</span></span><span class="cl indent2"><span class="str">"MySQL"</span><span class="op">,</span> <span class="str">"PHP"</span></span><span class="cl indent">]<span class="op">,</span></span><span class="cl indent"><span class="str">currently</span><span class="op">:</span> <span class="str">"Building cool things 🚀"</span></span><span class="cl">}<span class="op">;</span></span><span class="cl"> </span><span class="cl"><span class="kw">function</span> <span class="fn">hireMeNow</span>() {</span><span class="cl indent"><span class="kw">return</span> <span class="fn">developer</span><span class="op">.</span><span class="fn">openToWork</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span><span class="cl">}</span><span class="cl"> </span><span class="cl cm">// ✓ Available for opportunities</span><span class="cl"><span class="op">_</span><span style="display:inline-block;width:8px;height:1.1em;background:var(--blue);vertical-align:text-bottom;animation:cblink .9s step-end infinite;margin-left:2px"></span></span></div></div></div>
+    <div class="hero-visual">
+      <div class="photo-card">
+        <div class="photo-frame">
+          <!-- ✏️ Replace # with your actual photo URL -->
+          <img src="WhatsApp Image 2026-03-26 at 2.10.16 PM.jpeg" alt="Nikil Kumar" id="profilePhoto" style="display:none">
+          <div class="photo-placeholder" id="photoPlaceholder">
+            <div style="font-size:4rem">👨‍💻</div>
+            <div style="font-family:var(--mono);font-size:.6rem;color:var(--g3);letter-spacing:.14em;text-transform:uppercase">Add your photo here</div>
+            <div style="font-family:var(--mono);font-size:.52rem;color:var(--g4);letter-spacing:.1em">Replace # in img src</div>
+          </div>
+          <div class="photo-grad-overlay"></div>
+          <div class="photo-overlay">
+            <div class="photo-name">Nikil Kumar</div>
+            <div class="photo-role">// Cloud Computing Engineer</div>
+            <div class="photo-badges">
+              <span class="photo-badge">B.Tech CSE</span>
+              <span class="photo-badge">LPU · 2027</span>
+              <span class="photo-badge">Open to Internships</span>
+            </div>
+          </div>
+        </div>
+        <div class="code-card-sm">
+          <div class="code-bar-sm">
+            <span class="code-dot" style="background:#ff5f57"></span><span class="code-dot" style="background:#febc2e"></span><span class="code-dot" style="background:#28c840"></span>
+            <span class="code-fname-sm">nikil.cloud.js</span>
+          </div>
+          <div class="code-body-sm">
+            <span class="cl cm">// Cloud Computing Engineer</span>
+            <span class="cl"><span class="kw">const</span> <span class="fn">engineer</span> = {</span>
+            <span class="cl indent"><span class="str">cloud</span><span class="op">:</span> [<span class="str">"AWS"</span>, <span class="str">"Azure"</span>],</span>
+            <span class="cl indent"><span class="str">openToWork</span><span class="op">:</span> <span class="kw">true</span>,</span>
+            <span class="cl indent"><span class="str">location</span><span class="op">:</span> <span class="str">"Jhajjar, Haryana"</span></span>
+            <span class="cl">};</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="marquee-wrap"><div class="mq"><span>React</span><span class="mq-dot">·</span><span>Node.js</span><span class="mq-dot">·</span><span>Java</span><span class="mq-dot">·</span><span>Tailwind CSS</span><span class="mq-dot">·</span><span>JavaScript</span><span class="mq-dot">·</span><span>MySQL</span><span class="mq-dot">·</span><span>PHP</span><span class="mq-dot">·</span><span>HTML &amp; CSS</span><span class="mq-dot">·</span><span>DSA</span><span class="mq-dot">·</span><span>MERN Stack</span><span class="mq-dot">·</span><span>UI/UX Design</span><span class="mq-dot">·</span><span>Full-Stack</span><span class="mq-dot">·</span><span>React</span><span class="mq-dot">·</span><span>Node.js</span><span class="mq-dot">·</span><span>Java</span><span class="mq-dot">·</span><span>Tailwind CSS</span><span class="mq-dot">·</span><span>JavaScript</span><span class="mq-dot">·</span><span>MySQL</span><span class="mq-dot">·</span><span>PHP</span><span class="mq-dot">·</span><span>HTML &amp; CSS</span><span class="mq-dot">·</span><span>DSA</span><span class="mq-dot">·</span><span>MERN Stack</span><span class="mq-dot">·</span><span>UI/UX Design</span><span class="mq-dot">·</span><span>Full-Stack</span><span class="mq-dot">·</span></div></div>
+<div class="marquee-wrap"><div class="mq"><span>AWS</span><span class="mq-dot">·</span><span>Azure</span><span class="mq-dot">·</span><span>Cloud Computing</span><span class="mq-dot">·</span><span>React</span><span class="mq-dot">·</span><span>Node.js</span><span class="mq-dot">·</span><span>Java</span><span class="mq-dot">·</span><span>Tailwind CSS</span><span class="mq-dot">·</span><span>JavaScript</span><span class="mq-dot">·</span><span>MySQL</span><span class="mq-dot">·</span><span>PHP</span><span class="mq-dot">·</span><span>DSA</span><span class="mq-dot">·</span><span>MERN Stack</span><span class="mq-dot">·</span><span>AWS</span><span class="mq-dot">·</span><span>Azure</span><span class="mq-dot">·</span><span>Cloud Computing</span><span class="mq-dot">·</span><span>React</span><span class="mq-dot">·</span><span>Node.js</span><span class="mq-dot">·</span><span>Java</span><span class="mq-dot">·</span><span>Tailwind CSS</span><span class="mq-dot">·</span><span>JavaScript</span><span class="mq-dot">·</span><span>MySQL</span><span class="mq-dot">·</span><span>PHP</span><span class="mq-dot">·</span><span>DSA</span><span class="mq-dot">·</span><span>MERN Stack</span><span class="mq-dot">·</span></div></div>
 
-<div class="stats-strip"><div class="stat-cell rv"><div class="stat-n" data-count="3">0</div><div class="stat-l">Projects Shipped</div></div><div class="stat-cell rv"><div class="stat-n" data-count="5" data-plus="true">0</div><div class="stat-l">Certifications</div></div><div class="stat-cell rv"><div class="stat-n" data-count="85" data-pct="true">0</div><div class="stat-l">NPTEL DSA Score</div></div><div class="stat-cell rv"><div class="stat-n" data-count="725" data-dec="true">0</div><div class="stat-l">CGPA at LPU</div></div></div>
+<div class="stats-strip">
+  <div class="stat-cell rv"><div class="stat-n" data-count="2">0</div><div class="stat-l">Projects Shipped</div></div>
+  <div class="stat-cell rv"><div class="stat-n" data-count="5" data-plus="true">0</div><div class="stat-l">Certifications</div></div>
+  <div class="stat-cell rv"><div class="stat-n" data-count="85" data-pct="true">0</div><div class="stat-l">NPTEL DSA Score</div></div>
+  <div class="stat-cell rv"><div class="stat-n" data-count="725" data-dec="true">0</div><div class="stat-l">CGPA at LPU</div></div>
+</div>
 
-<section class="section" id="about"><div class="sec-wrap"><div class="sec-head rv"><span class="sec-eyebrow">01 · Who I am</span><h2 class="sec-title">About Me</h2><p class="sec-sub">Full-stack developer passionate about building clean, functional web experiences.</p></div><div class="about-grid"><div class="rv"><div class="about-card"><div class="ac-av">👨‍💻</div><div class="ac-name">Nikil Kumar</div><div class="ac-role">// Full-Stack Developer</div><div class="ac-row">📍 <strong>Jhajjar, Haryana</strong></div><div class="ac-row">🎓 <strong>B.Tech CSE · LPU · 2027</strong></div><div class="ac-row">💼 <strong>Open to Internships</strong></div><div class="ac-row">📧 <strong>nikil.ahlawat.work@gmail.com</strong></div><div class="ac-row">🐙 <strong>github.com/NikilAhlawat</strong></div><div style="margin-top:1.4rem"><div style="font-family:var(--mono);font-size:.58rem;color:var(--g3);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.8rem">Tech Stack</div><div class="stack-chips"><span class="chip hi">React</span><span class="chip hi">Node.js</span><span class="chip hi">Java</span><span class="chip">Tailwind</span><span class="chip">JavaScript</span><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">HTML/CSS</span><span class="chip">Xampp</span></div></div></div><div class="edu-list rv" style="margin-top:1.2rem"><div class="edu-item"><div class="edu-bar"></div><div><div class="edu-school">Lovely Professional University</div><div class="edu-deg">B.Tech — Computer Science & Engineering</div><div class="edu-meta">Aug 2023 – Present · CGPA: 7.25</div></div></div><div class="edu-item"><div class="edu-bar" style="background:var(--g3)"></div><div><div class="edu-school">Mother India Sr. Sec. School, Jhajjar</div><div class="edu-deg">Intermediate · 84%</div><div class="edu-meta">Apr 2021 – May 2022</div></div></div><div class="edu-item"><div class="edu-bar" style="background:var(--g4)"></div><div><div class="edu-school">Sarvodya School of Science, Dadri</div><div class="edu-deg">Matriculation · 74%</div><div class="edu-meta">Apr 2019 – May 2020</div></div></div></div></div><div class="about-text rv"><p>Hey, I'm <strong>Nikil Kumar</strong> — a full-stack web developer currently pursuing B.Tech in Computer Science & Engineering at Lovely Professional University. I love building responsive, user-focused web applications from the ground up.</p><p>My projects span the full stack — from a <strong>Virtual Herbal Garden</strong> with an interactive plant database, to a complete <strong>responsive e-commerce platform</strong>, to a <strong>Spotify-inspired music streaming UI</strong>. I care about clean code, intuitive UI, and fast, cross-device performance.</p><p>On the backend, I work with <strong>Node.js, Java, PHP, and MySQL</strong>. On the frontend, <strong>React, Tailwind CSS, and vanilla JavaScript</strong> are my go-to tools. I'm also deepening my skills in <strong>DSA with Java</strong> and the <strong>MERN stack</strong>.</p><p>I earned <strong>85% in NPTEL's proctored DSA exam</strong> and hold certifications from CipherSchools, IBM (Coursera), and Infosys Springboard. Currently open to internship opportunities in web development.</p></div></div></div></section>
+<section class="section" id="about">
+  <div class="sec-wrap">
+    <div class="sec-head rv"><span class="sec-eyebrow">01 · Who I am</span><h2 class="sec-title">About Me</h2><p class="sec-sub">Cloud computing engineer passionate about scalable systems and clean web experiences.</p></div>
+    <div class="about-grid">
+      <div class="rv">
+        <div class="about-card">
+          <div class="ac-av">☁️</div>
+          <div class="ac-name">Nikil Kumar</div>
+          <div class="ac-role">// Cloud Computing Engineer</div>
+          <div class="ac-row">📍 <strong>Jhajjar, Haryana</strong></div>
+          <div class="ac-row">🎓 <strong>B.Tech CSE · LPU · 2027</strong></div>
+          <div class="ac-row">💼 <strong>Open to Internships</strong></div>
+          <div class="ac-row">📧 <strong>nikil.ahlawat.work@gmail.com</strong></div>
+          <div class="ac-row">🐙 <strong>github.com/NikilAhlawat</strong></div>
+          <div style="margin-top:1.4rem">
+            <div style="font-family:var(--mono);font-size:.58rem;color:var(--g3);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.8rem">Tech Stack</div>
+            <div class="stack-chips">
+              <span class="chip hi">AWS</span><span class="chip hi">Azure</span><span class="chip hi">React</span><span class="chip hi">Node.js</span>
+              <span class="chip">Java</span><span class="chip">Tailwind</span><span class="chip">JavaScript</span><span class="chip">PHP</span><span class="chip">MySQL</span>
+            </div>
+          </div>
+        </div>
+        <div class="edu-list rv" style="margin-top:1.2rem">
+          <div class="edu-item"><div class="edu-bar"></div><div><div class="edu-school">Lovely Professional University</div><div class="edu-deg">B.Tech — Computer Science & Engineering</div><div class="edu-meta">Aug 2023 – Present · CGPA: 7.25</div></div></div>
+          <div class="edu-item"><div class="edu-bar" style="background:var(--g3)"></div><div><div class="edu-school">Mother India Sr. Sec. School, Jhajjar</div><div class="edu-deg">Intermediate · 84%</div><div class="edu-meta">Apr 2021 – May 2022</div></div></div>
+          <div class="edu-item"><div class="edu-bar" style="background:var(--g4)"></div><div><div class="edu-school">Sarvodya School of Science, Dadri</div><div class="edu-deg">Matriculation · 74%</div><div class="edu-meta">Apr 2019 – May 2020</div></div></div>
+        </div>
+      </div>
+      <div class="about-text rv">
+        <p>Hey, I'm <strong>Nikil Kumar</strong> — a cloud computing engineer currently pursuing B.Tech in Computer Science & Engineering at Lovely Professional University. I'm passionate about building scalable cloud-native solutions and responsive web applications.</p>
+        <p>My projects span cloud-integrated full-stack development — from a <strong>Crop Estimation & Analysis Web App</strong> using data-driven predictive models and interactive dashboards, to a complete <strong>Medical Center Website</strong> with AI-powered chat, secure authentication, and real-time service modules.</p>
+        <p>On the cloud side, I work with <strong>AWS and Azure</strong>. On the full-stack side, <strong>React, Node.js, PHP, MySQL, and Tailwind CSS</strong> are my go-to tools. I'm also deepening my skills in <strong>DSA with Java</strong> and the <strong>MERN stack</strong>.</p>
+        <p>I earned <strong>85% in NPTEL's proctored DSA exam</strong> and hold certifications from CipherSchools, IBM (Coursera), and Infosys Springboard. Currently open to cloud and web development internship opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section class="section" id="projects"><div class="sec-wrap"><div class="sec-head rv"><span class="sec-eyebrow">02 · What I've built</span><h2 class="sec-title">Projects</h2><p class="sec-sub">Responsive, user-first web applications built with modern tech.</p></div><div class="pj-grid"><div class="pj rv"><div class="pj-icon">🌿</div><div class="pj-n">001</div><div class="pj-title">Virtual Herbal Garden</div><div class="pj-sub">Digital Plant Education Platform</div><div class="pj-desc">A digital environment for identifying, classifying, and learning about herbal and medicinal plants. Interactive UI with a searchable plant database, images, medicinal uses, and categorised properties.</div><div class="pj-stk"><span class="st h">Tailwind</span><span class="st h">JavaScript</span><span class="st">PHP</span><span class="st">HTML/CSS</span><span class="st">Xampp</span></div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:.3rem"><span class="pj-link">Apr – May 2025</span><a href="https://github.com/NikilAhlawat" target="_blank" style="font-family:var(--mono);font-size:.55rem;color:var(--g3);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;border:1px solid var(--bdr2);padding:.2rem .55rem;border-radius:4px;transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.color='var(--blue)'" onmouseout="this.style.borderColor='var(--bdr2)';this.style.color='var(--g3)'">⌥ GitHub ↗</a></div></div><div class="pj rv"><div class="pj-icon">🛒</div><div class="pj-n">002</div><div class="pj-title">Shopping Website</div><div class="pj-sub">Responsive E-Commerce Platform</div><div class="pj-desc">Full e-commerce site with product listings, category filters, and a shopping cart. Built with Tailwind CSS for a clean layout, JavaScript for dynamic interactivity, and full cross-device responsiveness.</div><div class="pj-stk"><span class="st h">Tailwind</span><span class="st h">JavaScript</span><span class="st">HTML/CSS</span></div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:.3rem"><span class="pj-link">Nov – Dec 2024</span><a href="https://github.com/NikilAhlawat" target="_blank" style="font-family:var(--mono);font-size:.55rem;color:var(--g3);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;border:1px solid var(--bdr2);padding:.2rem .55rem;border-radius:4px;transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.color='var(--blue)'" onmouseout="this.style.borderColor='var(--bdr2)';this.style.color='var(--g3)'">⌥ GitHub ↗</a></div></div><div class="pj rv"><div class="pj-icon">🎵</div><div class="pj-n">003</div><div class="pj-title">Spotify Clone</div><div class="pj-sub">Responsive Music Web App</div><div class="pj-desc">Spotify-inspired music streaming UI with audio playback controls, playlist navigation, and dynamic UI updates. Built with Tailwind CSS for rapid styling, focused on cross-browser compatibility and performance.</div><div class="pj-stk"><span class="st h">Tailwind</span><span class="st h">JavaScript</span><span class="st">HTML/CSS</span></div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:.3rem"><span class="pj-link">Jun – Aug 2024</span><a href="https://github.com/NikilAhlawat" target="_blank" style="font-family:var(--mono);font-size:.55rem;color:var(--g3);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;border:1px solid var(--bdr2);padding:.2rem .55rem;border-radius:4px;transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.color='var(--blue)'" onmouseout="this.style.borderColor='var(--bdr2)';this.style.color='var(--g3)'">⌥ GitHub ↗</a></div></div></div></div></section>
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="sec-wrap">
+    <div class="sec-head rv"><span class="sec-eyebrow">02 · What I've built</span><h2 class="sec-title">Featured Projects</h2><p class="sec-sub">Data-driven and cloud-integrated web applications built with modern tech.</p></div>
+    <div class="pj-featured">
 
-<section class="section" id="skills"><div class="sec-wrap"><div class="sec-head rv"><span class="sec-eyebrow">03 · What I know</span><h2 class="sec-title">Skills</h2><p class="sec-sub">Languages, frameworks and tools I work with.</p></div><div class="sk-grid"><div class="sk rv"><div class="sk-icon">⚡</div><div class="sk-name">Frontend</div><div class="sk-list"><div class="sk-item">React</div><div class="sk-item">Tailwind CSS</div><div class="sk-item">JavaScript (ES6+)</div><div class="sk-item">HTML5 / CSS3</div></div></div><div class="sk rv"><div class="sk-icon">🔧</div><div class="sk-name">Backend</div><div class="sk-list"><div class="sk-item">Node.js</div><div class="sk-item">Java</div><div class="sk-item">PHP</div><div class="sk-item">MySQL / Xampp</div></div></div><div class="sk rv"><div class="sk-icon">🧠</div><div class="sk-name">CS Concepts</div><div class="sk-list"><div class="sk-item">Data Structures</div><div class="sk-item">Algorithms (Java)</div><div class="sk-item">OOP Principles</div><div class="sk-item">DBMS / SQL</div></div></div><div class="sk rv"><div class="sk-icon">🎨</div><div class="sk-name">Design & Tools</div><div class="sk-list"><div class="sk-item">UI/UX Design</div><div class="sk-item">Responsive Design</div><div class="sk-item">Git / GitHub</div><div class="sk-item">MERN Stack</div></div></div></div></div></section>
+      <!-- Project 01 -->
+      <div class="pj-feat rv">
+        <div class="pj-feat-content" style="position:relative">
+          <div class="pj-feat-num">01</div>
+          <div class="pj-feat-label">Featured Project</div>
+          <div class="pj-feat-date">Apr 2025 – May 2025</div>
+          <h3 class="pj-feat-title">Crop Estimation and Analysis Web Application</h3>
+          <p class="pj-feat-desc">Developed a web-based application for crop estimation and analysis using data-driven techniques to predict yield and monitor agricultural trends. Integrated features for real-time data input, visualization, and analytics to assist farmers in decision-making.</p>
+          <div class="pj-feat-bullets">
+            <div class="pj-bullet">Implemented data processing and predictive models to estimate crop productivity based on weather, soil, and historical data</div>
+            <div class="pj-bullet">Designed an intuitive user interface with charts and dashboards for improved usability</div>
+            <div class="pj-bullet">Ensured efficient performance and scalability by optimizing backend processes</div>
+          </div>
+          <div class="pj-feat-stk">
+            <span class="pj-st h">JavaScript</span><span class="pj-st h">HTML</span><span class="pj-st h">CSS</span><span class="pj-st">Data Analytics</span><span class="pj-st">Charts</span>
+          </div>
+          <a href="https://github.com/NikilAhlawat/Crop-Estimation" target="_blank" class="pj-feat-link">⌥ View Code on GitHub ↗</a>
+        </div>
+        <div class="pj-feat-visual">
+          <div class="pj-mockup">
+            <div class="pj-mockup-bar"><div class="pj-mockup-dot" style="background:#ff5f57"></div><div class="pj-mockup-dot" style="background:#febc2e"></div><div class="pj-mockup-dot" style="background:#28c840"></div></div>
+            <span class="pm-line pm-cm">// crop_model.js · Prediction Engine</span>
+            <span class="pm-line"> </span>
+            <span class="pm-line"><span class="pm-kw">async function</span> <span class="pm-fn">estimateYield</span>(data) {</span>
+            <span class="pm-line pm-indent"><span class="pm-kw">const</span> { soil, weather, history } = data;</span>
+            <span class="pm-line pm-indent"><span class="pm-kw">const</span> features = <span class="pm-fn">extractFeatures</span>({</span>
+            <span class="pm-line pm-indent2"><span class="pm-str">soilPH</span>: soil.ph,</span>
+            <span class="pm-line pm-indent2"><span class="pm-str">rainfall</span>: weather.avg,</span>
+            <span class="pm-line pm-indent2"><span class="pm-str">historicalYield</span>: history</span>
+            <span class="pm-line pm-indent">});</span>
+            <span class="pm-line pm-indent"><span class="pm-kw">return</span> model.<span class="pm-fn">predict</span>(features);</span>
+            <span class="pm-line">}</span>
+            <span class="pm-line"> </span>
+            <span class="pm-line pm-cm">// ✓ Predicted yield: 4.2 tonnes/ha</span>
+            <span class="pm-line pm-cm">// ✓ Confidence: 87.3%</span>
+            <span class="pm-line pm-cm">// ✓ Charts & dashboard rendered</span>
+          </div>
+        </div>
+      </div>
 
-<section class="section" id="certs"><div class="sec-wrap"><div class="sec-head rv"><span class="sec-eyebrow">04 · Proof of work</span><h2 class="sec-title">Certs & Wins</h2><p class="sec-sub">Certifications earned and milestones hit.</p></div><div style="margin-bottom:3rem"><div style="font-family:var(--mono);font-size:.62rem;color:var(--g3);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.4rem" class="rv">🏆 Achievements</div><div class="ach-grid rv"><div class="ach-card"><div class="ach-icon">🏅</div><div><div class="ach-title">NPTEL — DSA with Java</div><div class="ach-org">Jan 2025 – Apr 2025 · Proctored Exam</div><div class="ach-desc">Earned a strong score in NPTEL's proctored certification exam for Data Structures & Algorithms using Java, demonstrating solid subject mastery.</div><div class="ach-score">85%</div></div></div><div class="ach-card"><div class="ach-icon">☕</div><div><div class="ach-title">DSA using Java — CipherSchools</div><div class="ach-org">July 2025 · Certificate ID: CSW2025-13005</div><div class="ach-desc">Successfully completed hands-on training in Data Structures and Algorithms using Java Programming from CipherSchools. Verified certificate.</div><div style="margin-top:.7rem"><span class="cert-badge">Verified ↗</span></div></div></div></div></div><div style="font-family:var(--mono);font-size:.62rem;color:var(--g3);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.4rem" class="rv">📜 Certifications</div><div class="cert-grid rv"><a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">☕</div><div><div class="cert-name">Decode Java with DSA</div><div class="cert-org">Physics Wallah · Nov 2025 – Present</div><div class="cert-badge">In Progress</div></div><div class="cert-arr">↗</div></a><a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">🌐</div><div><div class="cert-name">Web Development in MERN</div><div class="cert-org">Apna College · Oct 2025 – Present</div><div class="cert-badge">In Progress</div></div><div class="cert-arr">↗</div></a><a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">🎨</div><div><div class="cert-name">UI/UX Design</div><div class="cert-org">CipherSchools · Jun – Jul 2025</div><div class="cert-badge">Completed</div></div><div class="cert-arr">↗</div></a><a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">🤖</div><div><div class="cert-name">Master Generative AI & AI Tools</div><div class="cert-org">Infosys Springboard · Aug 2025</div><div class="cert-badge">Completed</div></div><div class="cert-arr">↗</div></a><a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">💻</div><div><div class="cert-name">Intro to Hardware & Operating Systems</div><div class="cert-org">IBM via Coursera · Sep 2024</div><div class="cert-badge">Completed</div></div><div class="cert-arr">↗</div></a><a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">🎓</div><div><div class="cert-name">All Certificates on Drive</div><div class="cert-org">View all verified certificates ↗</div><div class="cert-badge">View All</div></div><div class="cert-arr">↗</div></a></div></div></section>
+      <!-- Project 02 -->
+      <div class="pj-feat rv">
+        <div class="pj-feat-content" style="position:relative">
+          <div class="pj-feat-num">02</div>
+          <div class="pj-feat-label">Featured Project</div>
+          <div class="pj-feat-date">Feb 2025 – Apr 2025</div>
+          <h3 class="pj-feat-title">Dispensary — Medical Center Website</h3>
+          <p class="pj-feat-desc">Developed a responsive medical center website using PHP, Tailwind CSS, and JavaScript to provide an interactive platform for healthcare services. Implemented secure user authentication with login, signup, session management, and user profile handling.</p>
+          <div class="pj-feat-bullets">
+            <div class="pj-bullet">Designed and deployed key medical service modules including appointment support and ambulance services</div>
+            <div class="pj-bullet">Integrated AI-based chat support with voice input and text-to-speech functionality</div>
+            <div class="pj-bullet">Implemented department-wise information sections (Neurology, Cardiology, etc.)</div>
+          </div>
+          <div class="pj-feat-stk">
+            <span class="pj-st h">PHP</span><span class="pj-st h">Tailwind CSS</span><span class="pj-st h">JavaScript</span><span class="pj-st">MySQL</span><span class="pj-st">AI Chat</span>
+          </div>
+          <a href="https://github.com/NikilAhlawat/Dispensary-Medical-Center-Website" target="_blank" class="pj-feat-link">⌥ View Code on GitHub ↗</a>
+        </div>
+        <div class="pj-feat-visual">
+          <div class="pj-mockup">
+            <div class="pj-mockup-bar"><div class="pj-mockup-dot" style="background:#ff5f57"></div><div class="pj-mockup-dot" style="background:#febc2e"></div><div class="pj-mockup-dot" style="background:#28c840"></div></div>
+            <span class="pm-line pm-cm">// dispensary.php · Auth & Services</span>
+            <span class="pm-line"> </span>
+            <span class="pm-line"><span class="pm-kw">function</span> <span class="pm-fn">handleAuth</span>($req) {</span>
+            <span class="pm-line pm-indent"><span class="pm-kw">if</span> ($req[<span class="pm-str">'action'</span>] === <span class="pm-str">'login'</span>) {</span>
+            <span class="pm-line pm-indent2"><span class="pm-fn">validateSession</span>($user);</span>
+            <span class="pm-line pm-indent2"><span class="pm-fn">redirectToDashboard</span>();</span>
+            <span class="pm-line pm-indent">}</span>
+            <span class="pm-line">}</span>
+            <span class="pm-line"> </span>
+            <span class="pm-line pm-cm">// Departments: Neurology · Cardiology</span>
+            <span class="pm-line pm-cm">// Features: AI Chat · Voice Input</span>
+            <span class="pm-line pm-cm">// Auth: Login · Signup · Sessions ✓</span>
+          </div>
+        </div>
+      </div>
 
-<section class="section contact-section" id="contact"><div class="ct-label">Let's build together</div><div class="ct-head"><span class="out">LET'S</span><span class="grad">CONNECT</span><span class="out">TODAY</span></div><a href="mailto:nikil.ahlawat.work@gmail.com" class="ct-email">nikil.ahlawat.work@gmail.com</a><div class="soc-row"><a href="https://github.com/NikilAhlawat" target="_blank" class="soc">GitHub</a><a href="https://www.linkedin.com/in/nikil-ahlawat/" target="_blank" class="soc">LinkedIn</a><a href="tel:+919875833146" class="soc">+91 98758 33146</a><a href="https://drive.google.com/file/d/1rrGvS136njb4StQNi0MMMIKO1QhjacAC/view?usp=sharing" target="_blank" class="soc">Resume ↗</a></div></section>
+    </div>
+  </div>
+</section>
 
-<footer><span>Nikil Kumar · Full-Stack Developer · 2026</span><span>Built with ♥ · LPU Punjab</span></footer>
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="sec-wrap">
+    <div class="sec-head rv"><span class="sec-eyebrow">03 · What I know</span><h2 class="sec-title">Skills</h2><p class="sec-sub">Cloud platforms, languages, frameworks and tools I work with.</p></div>
+    <div class="sk-grid">
+      <div class="sk rv"><div class="sk-icon">☁️</div><div class="sk-name">Cloud</div><div class="sk-list"><div class="sk-item">AWS (EC2, S3, Lambda)</div><div class="sk-item">Microsoft Azure</div><div class="sk-item">Cloud Architecture</div><div class="sk-item">Serverless Computing</div></div></div>
+      <div class="sk rv"><div class="sk-icon">⚡</div><div class="sk-name">Frontend</div><div class="sk-list"><div class="sk-item">React</div><div class="sk-item">Tailwind CSS</div><div class="sk-item">JavaScript (ES6+)</div><div class="sk-item">HTML5 / CSS3</div></div></div>
+      <div class="sk rv"><div class="sk-icon">🔧</div><div class="sk-name">Backend</div><div class="sk-list"><div class="sk-item">Node.js</div><div class="sk-item">Java</div><div class="sk-item">PHP</div><div class="sk-item">MySQL / Xampp</div></div></div>
+      <div class="sk rv"><div class="sk-icon">🧠</div><div class="sk-name">CS & Tools</div><div class="sk-list"><div class="sk-item">Data Structures</div><div class="sk-item">Algorithms (Java)</div><div class="sk-item">Git / GitHub</div><div class="sk-item">UI/UX Design</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section class="section" id="certs">
+  <div class="sec-wrap">
+    <div class="sec-head rv"><span class="sec-eyebrow">04 · Proof of work</span><h2 class="sec-title">Certs & Wins</h2><p class="sec-sub">Certifications earned and milestones hit.</p></div>
+    <div style="margin-bottom:3rem">
+      <div style="font-family:var(--mono);font-size:.62rem;color:var(--g3);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.4rem" class="rv">🏆 Achievements</div>
+      <div class="ach-grid rv">
+        <div class="ach-card"><div class="ach-icon">🏅</div><div><div class="ach-title">NPTEL — DSA with Java</div><div class="ach-org">Jan 2025 – Apr 2025 · Proctored Exam</div><div class="ach-desc">Earned a strong score in NPTEL's proctored certification exam for Data Structures & Algorithms using Java, demonstrating solid subject mastery.</div><div class="ach-score">85%</div></div></div>
+        <div class="ach-card"><div class="ach-icon">☕</div><div><div class="ach-title">DSA using Java — CipherSchools</div><div class="ach-org">July 2025 · Certificate ID: CSW2025-13005</div><div class="ach-desc">Successfully completed hands-on training in Data Structures and Algorithms using Java Programming from CipherSchools. Verified certificate.</div><div style="margin-top:.7rem"><span class="cert-badge">Verified ↗</span></div></div></div>
+      </div>
+    </div>
+    <div style="font-family:var(--mono);font-size:.62rem;color:var(--g3);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.4rem" class="rv">📜 Certifications</div>
+    <div class="cert-grid rv">
+      <a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">☕</div><div><div class="cert-name">Decode Java with DSA</div><div class="cert-org">Physics Wallah · Nov 2025 – Present</div><div class="cert-badge">In Progress</div></div><div class="cert-arr">↗</div></a>
+      <a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">🌐</div><div><div class="cert-name">Web Development in MERN</div><div class="cert-org">Apna College · Oct 2025 – Present</div><div class="cert-badge">In Progress</div></div><div class="cert-arr">↗</div></a>
+      <a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">🎨</div><div><div class="cert-name">UI/UX Design</div><div class="cert-org">CipherSchools · Jun – Jul 2025</div><div class="cert-badge">Completed</div></div><div class="cert-arr">↗</div></a>
+      <a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">🤖</div><div><div class="cert-name">Master Generative AI & AI Tools</div><div class="cert-org">Infosys Springboard · Aug 2025</div><div class="cert-badge">Completed</div></div><div class="cert-arr">↗</div></a>
+      <a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">💻</div><div><div class="cert-name">Intro to Hardware & Operating Systems</div><div class="cert-org">IBM via Coursera · Sep 2024</div><div class="cert-badge">Completed</div></div><div class="cert-arr">↗</div></a>
+      <a href="https://drive.google.com/drive/folders/1R0ZqYqQJwdZBJtlwTmPX8d9vPxZPLvhL?usp=sharing" target="_blank" class="cert-card"><div class="cert-ico">🎓</div><div><div class="cert-name">All Certificates on Drive</div><div class="cert-org">View all verified certificates ↗</div><div class="cert-badge">View All</div></div><div class="cert-arr">↗</div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="ct-label">Let's build together</div>
+  <div class="ct-head"><span class="out">LET'S</span><span class="grad">CONNECT</span><span class="out">TODAY</span></div>
+  <a href="mailto:nikil.ahlawat.work@gmail.com" class="ct-email">nikil.ahlawat.work@gmail.com</a>
+  <div class="soc-row">
+    <a href="https://github.com/NikilAhlawat" target="_blank" class="soc">GitHub</a>
+    <a href="https://www.linkedin.com/in/nikil-ahlawat/" target="_blank" class="soc">LinkedIn</a>
+    <a href="tel:+919875833146" class="soc">+91 98758 33146</a>
+    <a href="https://drive.google.com/file/d/1rrGvS136njb4StQNi0MMMIKO1QhjacAC/view?usp=sharing" target="_blank" class="soc">Resume ↗</a>
+  </div>
+</section>
+
+<footer><span>Nikil Kumar · Cloud Computing Engineer · 2026</span><span>Built with ♥ · LPU Punjab</span></footer>
 </div>
 
 <script>
 (function(){
-  // ---- CUSTOM CURSOR ----
-  const cur = document.getElementById('cur');
-  const outer = document.getElementById('cur-outer');
-  let mx = 0, my = 0, ox = 0, oy = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
-  (function animateCursor() {
-    ox += (mx - ox) * 0.12;
-    oy += (my - oy) * 0.12;
-    outer.style.left = ox + 'px';
-    outer.style.top = oy + 'px';
-    requestAnimationFrame(animateCursor);
-  })();
+  // CURSOR
+  const cur=document.getElementById('cur'),outer=document.getElementById('cur-outer');
+  let mx=0,my=0,ox=0,oy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+  (function loop(){ox+=(mx-ox)*.12;oy+=(my-oy)*.12;outer.style.left=ox+'px';outer.style.top=oy+'px';requestAnimationFrame(loop)})();
 
-  // ---- LOADER (FIXED: GUARANTEED FINISH) ----
-  const loader = document.getElementById('loader');
-  const mainEl = document.getElementById('main');
-  const lbar = document.getElementById('lbar');
-  const lpct = document.getElementById('lpct');
-  const ltxt = document.getElementById('ltxt');
-  const dots = ['d0','d1','d2','d3','d4'].map(id => document.getElementById(id));
-  const messages = ['Initialising...','Loading assets...','Compiling components...','Building UI...','Almost ready...'];
-  
-  let finished = false;
-  let animationFrameId = null;
-  let fallbackTimer = null;
-  
-  function finishLoader() {
-    if (finished) return;
-    finished = true;
-    if (animationFrameId) cancelAnimationFrame(animationFrameId);
-    if (fallbackTimer) clearTimeout(fallbackTimer);
-    lbar.style.width = '100%';
-    lpct.textContent = '100%';
-    ltxt.textContent = 'Ready!';
-    dots.forEach(dot => dot && dot.classList.add('on'));
-    loader.style.opacity = '0';
-    mainEl.classList.add('on');
-    setTimeout(() => { loader.style.display = 'none'; }, 800);
-    // trigger intersection observer for animated elements after main visible
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((entry, idx) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('in'), idx * 60);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+  // PHOTO: show img if loaded, else show placeholder
+  const img=document.getElementById('profilePhoto');
+  const ph=document.getElementById('photoPlaceholder');
+  if(img&&img.src&&img.src!==window.location.href&&img.getAttribute('src')!=='#'){
+    img.onload=()=>{img.style.display='block';if(ph)ph.style.display='none'};
+    img.onerror=()=>{img.style.display='none';if(ph)ph.style.display='flex'};
   }
-  
-  // expose skip globally
-  window.skipLoad = finishLoader;
-  document.getElementById('skip-loader').onclick = finishLoader;
-  
-  const startTime = performance.now();
-  const DURATION = 1900; // 1.9 seconds smooth load
-  
-  function updateLoader(now) {
-    const elapsed = now - startTime;
-    let progress = Math.min(elapsed / DURATION, 1);
-    // ease out cubic for nicer feeling
-    const eased = 1 - Math.pow(1 - progress, 2.5);
-    const percent = Math.floor(eased * 100);
-    lbar.style.width = (eased * 100) + '%';
-    lpct.textContent = percent + '%';
-    const msgIndex = Math.min(Math.floor(progress * messages.length), messages.length - 1);
-    ltxt.textContent = messages[msgIndex];
-    const activeDot = Math.min(Math.floor(progress * dots.length), dots.length - 1);
-    dots.forEach((dot, i) => {
-      if (i <= activeDot) dot.classList.add('on');
-      else dot.classList.remove('on');
-    });
-    if (progress < 1) {
-      animationFrameId = requestAnimationFrame(updateLoader);
-    } else {
-      finishLoader();
-    }
+
+  // LOADER
+  const loader=document.getElementById('loader'),mainEl=document.getElementById('main');
+  const lbar=document.getElementById('lbar'),lpct=document.getElementById('lpct'),ltxt=document.getElementById('ltxt');
+  const dots=['d0','d1','d2','d3','d4'].map(id=>document.getElementById(id));
+  const msgs=['Initialising...','Loading assets...','Compiling components...','Building UI...','Almost ready...'];
+  let finished=false,afid=null,fbt=null;
+  function finish(){
+    if(finished)return;finished=true;
+    if(afid)cancelAnimationFrame(afid);if(fbt)clearTimeout(fbt);
+    lbar.style.width='100%';lpct.textContent='100%';ltxt.textContent='Ready!';
+    dots.forEach(d=>d&&d.classList.add('on'));
+    loader.style.opacity='0';mainEl.classList.add('on');
+    setTimeout(()=>loader.style.display='none',800);
+    const obs=new IntersectionObserver((entries)=>{
+      entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('in'),i*60)});
+    },{threshold:0.1});
+    document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
   }
-  
-  animationFrameId = requestAnimationFrame(updateLoader);
-  // ultimate fallback: if something freezes, finish after 3.5s max
-  fallbackTimer = setTimeout(() => {
-    if (!finished) finishLoader();
-  }, 3500);
-  
-  // ---- STATS COUNTER (SAME AS BEFORE) ----
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.count);
-        const isPct = el.dataset.pct === 'true';
-        const isDec = el.dataset.dec === 'true';
-        const isPlus = el.dataset.plus === 'true';
-        const duration = 1600;
-        const startVal = 0;
-        const startTimeStamp = performance.now();
-        function updateCounter(now) {
-          const elapsed = now - startTimeStamp;
-          let progress = Math.min(elapsed / duration, 1);
-          const ease = 1 - Math.pow(1 - progress, 3);
-          let currentVal = Math.floor(target * ease);
-          if (isDec) el.textContent = (currentVal / 100).toFixed(2);
-          else if (isPct) el.textContent = currentVal + '%';
-          else if (isPlus) el.textContent = currentVal + '+';
-          else el.textContent = currentVal;
-          if (progress < 1) requestAnimationFrame(updateCounter);
-          else {
-            if (isDec) el.textContent = (target / 100).toFixed(2);
-            else if (isPct) el.textContent = target + '%';
-            else if (isPlus) el.textContent = target + '+';
-            else el.textContent = target;
-          }
-        }
-        requestAnimationFrame(updateCounter);
-        counterObserver.unobserve(el);
+  window.skipLoad=finish;document.getElementById('skip-loader').onclick=finish;
+  const t0=performance.now(),DUR=1900;
+  function tick(now){
+    const p=Math.min((now-t0)/DUR,1),e=1-Math.pow(1-p,2.5);
+    lbar.style.width=(e*100)+'%';lpct.textContent=Math.floor(e*100)+'%';
+    ltxt.textContent=msgs[Math.min(Math.floor(p*msgs.length),msgs.length-1)];
+    const ad=Math.min(Math.floor(p*dots.length),dots.length-1);
+    dots.forEach((d,i)=>d&&(i<=ad?d.classList.add('on'):d.classList.remove('on')));
+    p<1?afid=requestAnimationFrame(tick):finish();
+  }
+  afid=requestAnimationFrame(tick);fbt=setTimeout(()=>{if(!finished)finish()},3500);
+
+  // COUNTERS
+  const co=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      const el=entry.target,target=parseInt(el.dataset.count);
+      const isPct=el.dataset.pct==='true',isDec=el.dataset.dec==='true',isPlus=el.dataset.plus==='true';
+      const t0=performance.now();
+      function upd(now){
+        const p=Math.min((now-t0)/1600,1),v=Math.floor(target*(1-Math.pow(1-p,3)));
+        el.textContent=isDec?(v/100).toFixed(2):isPct?v+'%':isPlus?v+'+':v;
+        if(p<1)requestAnimationFrame(upd);
+        else el.textContent=isDec?(target/100).toFixed(2):isPct?target+'%':isPlus?target+'+':target;
       }
+      requestAnimationFrame(upd);co.unobserve(el);
     });
-  }, { threshold: 0.4 });
-  document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
-  
-  // active nav highlight on scroll (simple)
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-  function updateActiveNav() {
-    let current = '';
-    const scrollPos = window.scrollY + 150;
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const bottom = top + section.offsetHeight;
-      if (scrollPos >= top && scrollPos < bottom) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
-    });
+  },{threshold:0.4});
+  document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+
+  // ACTIVE NAV
+  const secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.nav-link');
+  function navUpdate(){
+    let cur='';const sp=window.scrollY+150;
+    secs.forEach(s=>{if(sp>=s.offsetTop&&sp<s.offsetTop+s.offsetHeight)cur=s.id});
+    links.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+cur)l.classList.add('active')});
   }
-  window.addEventListener('scroll', updateActiveNav);
-  updateActiveNav();
+  window.addEventListener('scroll',navUpdate);navUpdate();
 })();
 </script>
 </body>
